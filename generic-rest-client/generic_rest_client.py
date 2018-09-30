@@ -2,10 +2,9 @@ import logging
 from urllib.parse import urljoin
 
 import requests
-from requests.auth import HTTPBasicAuth
-
 from exceptions import RequestFailureException
 from exceptions import UnknownResultException
+from requests.auth import HTTPBasicAuth
 
 logger = logging.getLogger(__name__)
 

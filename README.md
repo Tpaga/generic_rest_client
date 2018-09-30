@@ -1,6 +1,6 @@
 # Generic Rest Client
 
-A generic and imple REST client for your python project.
+A generic and simple REST client for your python projects.
 
 
 # How to install

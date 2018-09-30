@@ -2,10 +2,9 @@ from unittest import TestCase
 
 import requests
 import requests_mock
-
-from api_client import GenericRestClient
 from exceptions import RequestFailureException
 from exceptions import UnknownResultException
+from generic_rest_client import GenericRestClient
 
 
 def get_http_client(base_url, user, password):

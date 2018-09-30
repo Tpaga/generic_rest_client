@@ -1,6 +1,6 @@
 import logging
 
-from api_client import GenericRestClient
+from generic_rest_client import GenericRestClient
 
 logger = logging.getLogger(__name__)
 
