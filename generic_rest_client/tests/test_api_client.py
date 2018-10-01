@@ -4,8 +4,7 @@ import requests
 import requests_mock
 from exceptions import RequestFailureException
 from exceptions import UnknownResultException
-from generic_rest_client import GenericRestClient
-
+from client import GenericRestClient
 
 def get_http_client(base_url, user, password):
 	return GenericRestClient(

@@ -1,3 +1,4 @@
 generic_rest_client.egg-info
 dist
 build/lib/generic-rest-client
+build
