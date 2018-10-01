@@ -14,10 +14,12 @@ A generic and simple REST client for your python projects.
 First you will need to create your own class and extend GenericRestClient, 
 for example, lets see our mocky client.
 
-    from generic_rest_client.client import GenericRestClient
-    ...
-    class MockyRestClient(GenericRestClient):
-    ...
+```python
+from generic_rest_client.client import GenericRestClient
+...
+class MockyRestClient(GenericRestClient):
+...
+```
 
 ## Create custom methods
 
@@ -36,17 +38,19 @@ define:
  
 Then we will have: 
 
+```python
+...
+def get_comments(self):
     ...
-    def get_comments(self):
-        ...
-        endpoint_url = '/comments'
-    
-        return self.get_request(
-            endpoint_url,
-            None,
-            [200, ]
-        )
-    ...
+    endpoint_url = '/comments'
+
+    return self.get_request(
+        endpoint_url,
+        None,
+        [200, ]
+    )
+...
+```
     
 ### Create a new post
 
@@ -60,20 +64,22 @@ create a new post. To create a new post at least we will have to define:
  
 Then we will have:
 
-	...
-	def new_post(self, params):
-	    ...
-		endpoint_url = '/posts'
-		body_params = dict(
-			title=params['title'],
-			body=params['body'],
-		)
-		return self.post_request(
-			endpoint_url,
-			body_params,
-			[201, ]
-		)
+```python
+...
+def new_post(self, params):
     ...
+    endpoint_url = '/posts'
+    body_params = dict(
+        title=params['title'],
+        body=params['body'],
+    )
+    return self.post_request(
+        endpoint_url,
+        body_params,
+        [201, ]
+    )
+...
+```
 
 See? it's really simple. Good luck with your projects! :)
 
