@@ -12,9 +12,9 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'generic-rest-client'
+NAME = 'generic_rest_client'
 DESCRIPTION = 'A generic and simple REST client for your python projects.'
-URL = 'https://github.com/Manre/generic-rest-client'
+URL = 'https://github.com/Manre/generic_rest_client'
 EMAIL = 'enobmann@tpaga.co'
 AUTHOR = 'Ernesto Nobmann'
 REQUIRES_PYTHON = '>=3.6.0'
