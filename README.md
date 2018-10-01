@@ -5,7 +5,7 @@ A generic and simple REST client for your python projects.
 
 # How to install
 
-    pip install generic-rest-client
+    pip install generic_rest_client
 
 # How to use
 
@@ -14,7 +14,7 @@ A generic and simple REST client for your python projects.
 First you will need to create your own class and extend GenericRestClient, 
 for example, lets see our mocky client.
 
-    from api_client import GenericRestClient
+    from generic_rest_client.client import GenericRestClient
     ...
     class MockyRestClient(GenericRestClient):
     ...
