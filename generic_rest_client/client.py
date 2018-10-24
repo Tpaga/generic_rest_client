@@ -44,7 +44,7 @@ class GenericRestClient:
 		"""
 		url = urljoin(self.base_url, endpoint)
 		try:
-			if call_type == "get":
+			if call_type == 'get':
 				response = requests.get(
 					url,
 					params=params,
@@ -52,7 +52,7 @@ class GenericRestClient:
 					auth=self.auth,
 					timeout=self.timeout,
 				)
-			elif call_type == "post":
+			elif call_type == 'post':
 				response = requests.post(
 					url,
 					json=params,
