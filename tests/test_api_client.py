@@ -112,3 +112,55 @@ class ClientPostTestCase(TestCase):
 		json = response.json()
 		self.assertEqual(json['name'], 'tpaga rlz')
 		self.assertEqual(json['author'], 'manre')
+
+
+class ClientPutTestCase(TestCase):
+	def setUp(self):
+		self.base_url = 'https://jsonplaceholder.typicode.com/'
+		self.user = 'fake-user'
+		self.password = 'fake-pass'
+		self.client = get_http_client(
+			base_url=self.base_url,
+			user=self.user,
+			password=self.password,
+		)
+
+	def test_connerror(self):
+		client = get_http_client(
+			base_url='http://alderaan-do-not-exist.tpaga.co',
+			user=self.user,
+			password=self.password,
+		)
+
+		with self.assertRaises(RequestFailureException) as ctx:
+			client.post_request('', body_params={})
+
+		self.assertIsNone(ctx.exception.response)
+
+	@requests_mock.Mocker()
+	def test_timeout(self, mock):
+		mock.post(
+			'https://jsonplaceholder.typicode.com/alderaan',
+			exc=requests.exceptions.Timeout,
+		)
+		with self.assertRaises(UnknownResultException) as ctx:
+			self.client.post_request('alderaan', body_params={})
+
+		self.assertIsNone(ctx.exception.response)
+
+	def test_successful_connection(self):
+		updated_info = dict(
+			name='Tpaga rocks!',
+			body='This is my new post',
+		)
+
+		response = self.client.put_request(
+			'posts/1',
+			body_params=updated_info,
+			expected_http_codes=[200, ]
+		)
+
+		self.assertEqual(response.status_code, 200)
+		json = response.json()
+		self.assertEqual(json['name'], updated_info['name'])
+		self.assertEqual(json['body'], updated_info['body'])
