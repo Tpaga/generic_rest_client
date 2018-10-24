@@ -60,6 +60,14 @@ class GenericRestClient:
 					auth=self.auth,
 					timeout=self.timeout,
 				)
+			elif call_type == 'put':
+				response = requests.put(
+					url,
+					json=params,
+					headers=self.headers,
+					auth=self.auth,
+					timeout=self.timeout,
+				)
 		except requests.exceptions.ConnectionError as exc:
 			logger.error(
 				'Could not connect to API',
@@ -152,5 +160,22 @@ class GenericRestClient:
 			endpoint,
 			body_params,
 			'post',
+			expected_http_codes,
+		)
+
+	def put_request(self, endpoint, body_params, expected_http_codes=None):
+		"""Sends a request to update an element
+
+		Args:
+			endpoint (string): name of the service
+			body_params (dict): information to be updated
+			expected_http_codes list(int): expected codes for the request
+		Returns:
+			The response offered by the requests library when using post
+		"""
+		return self.do_request(
+			endpoint,
+			body_params,
+			'put',
 			expected_http_codes,
 		)
