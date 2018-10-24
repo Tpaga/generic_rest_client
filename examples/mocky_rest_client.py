@@ -42,3 +42,31 @@ class MockyRestClient(GenericRestClient):
 			body_params,
 			[201, ]
 		)
+
+	def update_post(self, post_id, params):
+		"""Updates an existing post
+
+		Args:
+			post_id(string): unique id of the post to be updated
+			params(dict): new post information, this should contain:
+				- title(str): New title
+				- body(str): New body
+
+		Returns:
+			requests.models.Response: Response of the request
+		"""
+
+		endpoint_url = '/posts/{post_id}'.format(
+			post_id=post_id,
+		)
+
+		body_params = dict(
+			title=params['title'],
+			body=params['body'],
+		)
+
+		return self.put_request(
+			endpoint_url,
+			body_params,
+			[201, ]
+		)
