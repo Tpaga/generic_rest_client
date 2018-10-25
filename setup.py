@@ -14,9 +14,9 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'generic_rest_client'
 DESCRIPTION = 'A generic and simple REST client for your python projects.'
-URL = 'https://github.com/Manre/generic_rest_client'
-EMAIL = 'enobmann@tpaga.co'
-AUTHOR = 'Ernesto Nobmann'
+URL = 'https://github.com/Tpaga/generic_rest_client'
+EMAIL = 'devs@tpaga.co'
+AUTHOR = 'Tpaga'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = None
 
