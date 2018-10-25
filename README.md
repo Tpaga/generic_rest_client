@@ -45,7 +45,7 @@ def get_comments(self):
     endpoint_url = '/comments'
 
     return self.get_request(
-        endpoint_url,
+        urljoin(self.base_url, endpoint_url),
         None,
         [200, ]
     )
@@ -69,14 +69,46 @@ Then we will have:
 def new_post(self, params):
     ...
     endpoint_url = '/posts'
+    
     body_params = dict(
         title=params['title'],
         body=params['body'],
     )
+    
     return self.post_request(
-        endpoint_url,
+        urljoin(self.base_url, endpoint_url),
         body_params,
         [201, ]
+    )
+...
+```
+
+### Update a post
+
+Just like creating a new post, we will create a new function and define: 
+
+* **Request type**: we know it is a PUT request.
+* **Endpoint name**: in this case it will be '/posts/{post_id}'. 
+* **Body params**: We create a dictionary that contains all the required params.
+* **Expected http code**: We define HTTP 200 as an expected response.
+ 
+```python
+...
+def update_post(self, post_id, params):
+    ...
+    endpoint_url = '/posts/{post_id}'.format(
+        post_id=post_id,
+    )
+
+    body_params = dict(
+        title=params['title'],
+        body=params['body'],
+    )
+
+    return self.put_request(
+        urljoin(self.base_url, endpoint_url),
+        body_params,
+        [200, ]
     )
 ...
 ```
