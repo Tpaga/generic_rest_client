@@ -1,6 +1,7 @@
 import logging
+from urllib.parse import urljoin
 
-from simple_rest_client.client import GenericRestClient
+from generic_rest_client.client import GenericRestClient
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ class MockyRestClient(GenericRestClient):
 		endpoint_url = '/comments'
 
 		return self.get_request(
-			endpoint_url,
+			urljoin(self.base_url, endpoint_url),
 			None,
 			[200, ]
 		)
@@ -38,7 +39,7 @@ class MockyRestClient(GenericRestClient):
 		)
 
 		return self.post_request(
-			endpoint_url,
+			urljoin(self.base_url, endpoint_url),
 			body_params,
 			[201, ]
 		)
@@ -66,7 +67,7 @@ class MockyRestClient(GenericRestClient):
 		)
 
 		return self.put_request(
-			endpoint_url,
+			urljoin(self.base_url, endpoint_url),
 			body_params,
-			[201, ]
+			[200, ]
 		)
